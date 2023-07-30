@@ -36,9 +36,9 @@ namespace TekScopeIVITest
 
                 listBox1.SetSelected(0, true);
                 tvc1.Descriptor = Convert.ToString(listBox1.SelectedItem);
-//                tek_lbl1.Text = "MFG: " + tvc1.InstrumentManufacturer.ToString();
-//                tek_lbl1.Text = "Model: " + tvc1.InstrumentModel.ToString();
-//                tek_lbl1.Text = "SID: " + tvc1.SoftwareManufacturerID.ToString();
+                tek_lbl1.Text = "MFG: " + tvc1.InstrumentManufacturer.ToString();
+                tek_lbl1.Text = "Model: " + tvc1.InstrumentModel.ToString();
+                tek_lbl1.Text = "SID: " + tvc1.SoftwareManufacturerID.ToString();
 
             }
 
@@ -47,6 +47,12 @@ namespace TekScopeIVITest
                 MessageBox.Show(ex.Message + "\r\n" + "No device found!");
             }
 
+        }
+
+        private void Close_btn_Click(object sender, EventArgs e)
+        {
+            // Close window
+            this.Close();
         }
     }
 }
