@@ -1,4 +1,6 @@
-﻿namespace TekScopeIVITest
+﻿using System;
+
+namespace TekScopeIVITest
 {
     partial class TekOscopeData
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.closeBtn = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -42,16 +45,18 @@
             this.chGroupBox = new System.Windows.Forms.GroupBox();
             this.setupBtn = new System.Windows.Forms.Button();
             this.infoText = new System.Windows.Forms.TextBox();
+            this.readBtn = new System.Windows.Forms.Button();
+            this.tmRead = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.chGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // refreshBtn
             // 
-            this.refreshBtn.Location = new System.Drawing.Point(366, 11);
+            this.refreshBtn.Location = new System.Drawing.Point(357, 11);
             this.refreshBtn.Margin = new System.Windows.Forms.Padding(2);
             this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(95, 19);
+            this.refreshBtn.Size = new System.Drawing.Size(93, 24);
             this.refreshBtn.TabIndex = 0;
             this.refreshBtn.Text = "Refresh";
             this.refreshBtn.UseVisualStyleBackColor = true;
@@ -59,10 +64,10 @@
             // 
             // closeBtn
             // 
-            this.closeBtn.Location = new System.Drawing.Point(98, 194);
+            this.closeBtn.Location = new System.Drawing.Point(357, 39);
             this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(56, 19);
+            this.closeBtn.Size = new System.Drawing.Size(93, 27);
             this.closeBtn.TabIndex = 1;
             this.closeBtn.Text = "Close";
             this.closeBtn.UseVisualStyleBackColor = true;
@@ -84,10 +89,10 @@
             this.tekInfoLbl1,
             this.tekInfoLbl2,
             this.tekInfoLbl3});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 219);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 183);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(464, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(465, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -170,9 +175,9 @@
             // 
             // setupBtn
             // 
-            this.setupBtn.Location = new System.Drawing.Point(237, 71);
+            this.setupBtn.Location = new System.Drawing.Point(237, 69);
             this.setupBtn.Name = "setupBtn";
-            this.setupBtn.Size = new System.Drawing.Size(83, 51);
+            this.setupBtn.Size = new System.Drawing.Size(116, 51);
             this.setupBtn.TabIndex = 8;
             this.setupBtn.Text = "Setup for Measurement";
             this.setupBtn.UseVisualStyleBackColor = true;
@@ -184,19 +189,35 @@
             this.infoText.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.infoText.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.infoText.ForeColor = System.Drawing.Color.LimeGreen;
-            this.infoText.Location = new System.Drawing.Point(0, 140);
+            this.infoText.Location = new System.Drawing.Point(0, 126);
             this.infoText.Multiline = true;
             this.infoText.Name = "infoText";
             this.infoText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.infoText.Size = new System.Drawing.Size(464, 79);
+            this.infoText.Size = new System.Drawing.Size(465, 57);
             this.infoText.TabIndex = 9;
-            this.infoText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+//            this.infoText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // readBtn
+            // 
+            this.readBtn.Location = new System.Drawing.Point(357, 69);
+            this.readBtn.Name = "readBtn";
+            this.readBtn.Size = new System.Drawing.Size(93, 51);
+            this.readBtn.TabIndex = 10;
+            this.readBtn.Text = "Start Read";
+            this.readBtn.UseVisualStyleBackColor = true;
+            this.readBtn.Click += new System.EventHandler(this.readBtn_Click);
+            // 
+            // tmRead
+            // 
+            this.tmRead.Interval = 500;
+            this.tmRead.Tick += new System.EventHandler(this.tmRead_Tick);
             // 
             // TekOscopeData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 241);
+            this.ClientSize = new System.Drawing.Size(465, 205);
+            this.Controls.Add(this.readBtn);
             this.Controls.Add(this.infoText);
             this.Controls.Add(this.setupBtn);
             this.Controls.Add(this.chGroupBox);
@@ -217,6 +238,8 @@
 
         }
 
+//        private void textBox1_TextChanged(object sender, EventArgs e) => throw new NotImplementedException();
+
         #endregion
 
         private System.Windows.Forms.Button refreshBtn;
@@ -233,6 +256,10 @@
         private System.Windows.Forms.GroupBox chGroupBox;
         private System.Windows.Forms.Button setupBtn;
         private System.Windows.Forms.TextBox infoText;
+        private System.Windows.Forms.Button readBtn;
+        private System.Windows.Forms.Timer tmRead;
+
+        public EventHandler textBox1_TextChanged { get; private set; }
     }
 }
 
